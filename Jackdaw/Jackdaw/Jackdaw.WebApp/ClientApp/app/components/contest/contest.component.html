@@ -1,0 +1,76 @@
+﻿<h1>Городской фестиваль знатоков иностранных языков</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4><strong>Основная цель фестиваля является выявление одарённых детей в области лингвистики и языкознания.</strong></h4>
+    </div>
+    <div class="col-md-12">
+        <p align="justify">
+            Для участия в фестивале приглашаются учащиеся учреждений общего и дополнительного образования, владеющие одним и более иностранными языками (английский, французский, немецкий и др.).
+            Ежегодно в рамках конкурса апробировались новые формы работы, направленные на выявление языковых, интеллектуальных, творческих способностей детей, воспитание гражданской позиции, нравственных качеств участников. За время проведения в фестивале принимали участие представители более шестидесяти образовательных учреждений города (до 600 участников, владеющих английским, французским, немецким языками, ежегодно).
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3><strong>Райтинг:</strong></h3>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-7">
+        <label>Номинация</label>
+        <select class="form-control" [(ngModel)]="registeredContestId">
+            <option *ngFor="let contest of contests" [value]="contest.id">
+                {{contest.date}}, {{contest.nomination.name}}, {{contest.nomination.contestName}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-5">
+        <label></label>
+        <div>
+            <button type="button" class="btn btn-default pull-right">Создать отчет</button>
+            <button type="button" class="btn btn-default pull-right">Разослать результаты</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <div class="form-group">
+            <label>Возрастная категория</label>
+            <select class="form-control">
+                <option>9-11 класс</option>
+                <option>1-4 класс</option>
+                <option>5-7 класс</option>
+                <option>8-9 класс</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div id="grid" class="row" style="margin-top: 20px">
+    <div class="col-md-12">
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Участник</th>
+                    <th>Работа</th>
+                    <th>Учереждение</th>
+                    <th>Оценка</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of registeredParticipants">
+                    <td>{{ item.place }}</td>
+                    <td>{{ item.fio }}</td>
+                    <td>{{ item.nameWork }}</td>
+                    <td>{{ item.institution }}</td>
+                    <td>{{ item.mark }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <button type="button" class="list-group-item" [routerLink]="['./analytics-classification']">
+                Классификация
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./analytics-forecast']">
+                Прогноз
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./analytics-assessment']">
+                Общая оценка 
+            </button>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="inner-outlet">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

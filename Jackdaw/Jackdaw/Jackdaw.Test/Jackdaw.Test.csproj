@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jackdaw.DataLayer\Jackdaw.DataLayer.csproj" />
+    <ProjectReference Include="..\Jackdaw.Infrastructure\Jackdaw.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Aspose.Pdf">
+      <HintPath>..\packages\Aspose.Pdf.17.11\lib\net40-client\Aspose.Pdf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

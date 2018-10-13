@@ -1,0 +1,69 @@
+﻿<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body" *ngIf="conditionClassification">
+                <h4>Классификация</h4>
+                <hr />
+                <div class="form-group">
+                    <kendo-chart style="height: 200px">
+                        <kendo-chart-category-axis>
+                            <kendo-chart-category-axis-item [categories]="categoriesDiagram">
+                            </kendo-chart-category-axis-item>
+                        </kendo-chart-category-axis>
+                        <kendo-chart-series>
+                            <kendo-chart-series-item [data]="valuesDiagram">
+                            </kendo-chart-series-item>
+                        </kendo-chart-series>
+                    </kendo-chart>
+                </div>
+                <div class="form-group">
+                    <div *ngFor="let itemGroup of values">
+                        <ul>
+                            <li>
+                                <strong> {{itemGroup.GroupName}} - {{itemGroup.LeafParameters}} </strong>
+                                <ul>
+                                    <li *ngFor="let itemSpecialtie of itemGroup.Specialties">
+                                        {{itemSpecialtie.Name}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+            <div class="panel-body" *ngIf="!conditionClassification">
+                <h5 align="center">Установите параметры для отображения данных</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Параметры</strong>
+                </div>
+                <div class="form-group">
+                    <p>Университет</p>
+                    <kendo-dropdownlist [defaultItem]="{ shortName: 'Выберите', id: null }"
+                                        [data]="universitys"
+                                        [textField]="'shortName'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedUniversity($event)"
+                                        style="width:100%">
+                    </kendo-dropdownlist>
+                </div>
+                <div class="form-group" *ngIf="showDropdownFaculty">
+                    <p>Факультет</p>
+                    <kendo-dropdownlist [defaultItem]="{ name: 'Все факультеты', id: null }"
+                                        [data]="facultys"
+                                        [textField]="'name'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedFaculty($event)"
+                                        style="width:100%">
+                    </kendo-dropdownlist>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

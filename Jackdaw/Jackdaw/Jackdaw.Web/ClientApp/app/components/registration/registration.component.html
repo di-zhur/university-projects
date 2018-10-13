@@ -1,0 +1,92 @@
+﻿<h1>Регистрация участника</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Новый участник</label>
+                    <input type="checkbox" name="isNewParticipant" [(ngModel)]="isNewParticipant" [checked]="isNewParticipant" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label>ФИО</label>
+                    <input type="text" class="form-control" required [(ngModel)]="participant.fio" name="fio" #fio="ngModel" />
+                    <div [hidden]="fio.valid || fio.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control"  [(ngModel)]="participant.email" #email="ngModel" required email />
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Название работы</label>
+                    <input type="text" class="form-control" [(ngModel)]="participant.nameWork" name="nameWork" #nameWork="ngModel">
+                    <div [hidden]="nameWork.valid || nameWork.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Учереждение</label>
+                    <select class="form-control" required [(ngModel)]="participant.institutionId" name="institutionId" #institutionId="ngModel">
+                        <option *ngFor="let institution of institutions" [value]="institution.id">
+                        {{institution.name}}
+                        </option>
+                    </select>
+                    <div [hidden]="institutionId.valid || institutionId.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Номинация (конкурс)</label>
+                    <select class="form-control" required [(ngModel)]="participant.registeredContestId" name="registeredContestId" #registeredContestId="ngModel">
+                        <option *ngFor="let contest of contests" [value]="contest.id">
+                        {{contest.date}}, {{contest.nomination.name}}, {{contest.nomination.contestName}}
+                        </option>
+                    </select>
+                    <div [hidden]="registeredContestId.valid || registeredContestId.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Примечание</label>
+                    <textarea class="form-control" 
+                              rows="3" 
+                              type="text" required 
+                              [(ngModel)]="participant.comment" 
+                              name="comment"
+                              #comment="ngModel"
+                              style="resize: none;">
+                    </textarea>
+                    <div [hidden]="comment.valid || comment.pristine" class="alert alert-danger">
+                        Заполните!
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" [disabled]="!registrationForm.form.valid">
+                    Зарегистрировать
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">Внимание!</div>
+            <div class="panel-body">
+                <p><strong>Заполните информацию о участнике и перепроверьте данные!</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

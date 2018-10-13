@@ -1,0 +1,47 @@
+<h1>Справочники</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-group">
+      <strong>Список справочников:</strong>
+      <kendo-grid [height]="300"
+                  [kendoGridBinding]="catalogs"
+                  [selectable]="selectableSettings"
+                  (selectionChange)="selectionCatalog($event)">
+        <kendo-grid-checkbox-column title="Отобразить" width="120"></kendo-grid-checkbox-column>
+        <kendo-grid-column field="name" title="Наименование"></kendo-grid-column>
+        <kendo-grid-column field="workedVersion" title="Рабочая версия"></kendo-grid-column>
+        <kendo-grid-command-column width="120">
+          <ng-template kendoGridCellTemplate>
+            <button kendoGridRemoveCommand>Удалить</button>
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Версия справочника</label>
+      <kendo-dropdownlist class="form-control"></kendo-dropdownlist>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click)="addField()">
+        Установить рабочую
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>Данные:</strong>
+      <kendo-grid [height]="300">
+        <div *ngFor="let o of columns">
+          <kendo-grid-column field="{{o.column}}" title="{{o.column}}"></kendo-grid-column>
+        </div>
+      </kendo-grid>
+    </div>
+  </div>
+</div>
+

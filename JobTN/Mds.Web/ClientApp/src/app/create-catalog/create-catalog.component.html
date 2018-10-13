@@ -1,0 +1,71 @@
+<h1>Создать справочник</h1>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="name">Новая версия справочника</label>
+      <input type="checkbox" name="isVersionCatalog" [(ngModel)]="isVersionCatalog" [checked]="isVersionCatalog">
+    </div>
+
+    <div *ngIf="!isVersionCatalog">
+      <div class="form-group">
+        <label>Наименование</label>
+        <input type="text" class="form-control" [(ngModel)]="table.name" name="table.name" />
+      </div>
+    </div>
+
+    <div *ngIf="isVersionCatalog">
+      <div class="form-group">
+        <label>Наименование</label>
+        <kendo-dropdownlist class="form-control" [data]="dataTypes" [(ngModel)]="selectedDataType" name="selectedDataType"></kendo-dropdownlist>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-group">
+      <strong>Поля:</strong>
+      <kendo-grid [kendoGridBinding]="table.fields" [height]="220" (remove)="removeHandler($event)">
+        <kendo-grid-column field="name" title="Наименование"></kendo-grid-column>
+        <kendo-grid-column field="dataType" title="Тип данных"></kendo-grid-column>
+        <kendo-grid-command-column width="100">
+          <ng-template kendoGridCellTemplate>
+            <button kendoGridRemoveCommand>Удалить</button>
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Наименование</label>
+      <input type="text" class="form-control" [(ngModel)]="selectedFieldName" name="selectedFieldName" />
+    </div>
+    <div class="form-group">
+      <label>Тип данных</label>
+      <kendo-dropdownlist class="form-control" [data]="dataTypes" [(ngModel)]="selectedDataType" name="selectedDataType"></kendo-dropdownlist>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click)="addField()">
+        Добавить
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="onCreateTable()">
+        Создать
+      </button>
+    </div>
+  </div>
+</div>
+
+
+

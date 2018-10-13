@@ -1,0 +1,61 @@
+﻿<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-8">
+        <div *ngFor="let university of universitys">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-2">
+                        <img src="/image/{{university.id}}.png" height="50" width="50" />
+                    </div>
+                    <div class="col-md-8">
+                        <p><strong>{{university.shortName}}</strong></p>
+                        {{university.name}}
+                    </div>
+                    <div class="col-md-2">
+                        <button kendoButton (click)="onLook(university)" [primary]="true">Просмотреть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Параметры</strong>
+                </div>
+                <div class="form-group">
+                    <p>Город</p>
+                    <kendo-dropdownlist style="width:100%"
+                                        [defaultItem]="{ name: 'Все регионы', id: null }"
+                                        [data]="dropdownCitys"
+                                        [textField]="'name'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedCity($event)">
+                    </kendo-dropdownlist>
+                </div>
+                <div *ngIf="conditionDropdownUniversitys" class="form-group">
+                    <p>Специализации</p>
+                    <kendo-multiselect style="width:100%"
+                                       [data]="dropdownSpecializations" 
+                                       [textField]="'name'"
+                                       [valueField]="'id'"
+                                       [(ngModel)]="value">
+                    </kendo-multiselect>
+                </div>
+                <div class="form-group">
+                    <button kendoButton (click)="onFind()" [primary]="true" style="width:100%">Найти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        
+
+
+
+        

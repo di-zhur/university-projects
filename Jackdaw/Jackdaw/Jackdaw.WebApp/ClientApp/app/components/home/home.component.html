@@ -1,0 +1,79 @@
+﻿<h1>Система оценки конкурсов МАУДО "РГДДТ"</h1>
+
+<div class="row" style="margin-top: 80px">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><p align="center">Конкурс-фестиваль «МИР И Я»</p></div>
+            <div class="panel-body">
+                <div class="panel-image">
+                    <img src="/image/document.jpg" class="panel-image-preview" height="266"/>
+                </div>
+            </div>
+            <div class="panel-footer text-center">
+                <button class="btn btn-default" (click)="onRouteContest()">
+                    Перейти
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><p align="center">Конкурс «ДУШИ И РУК ТВОРЕНЬЕ»</p></div>
+            <div class="panel-body">
+                <div class="panel-image">
+                    <img src="/image/dushi_i_ruk_na_fone.jpg" class="panel-image-preview" height="266"/>
+                </div>
+            </div>
+            <div class="panel-footer text-center">
+                <button class="btn btn-default">
+                    Перейти
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><p align="center">Конкурс-фестиваль «НАЧАЛО»</p></div>
+            <div class="panel-body">
+                <div class="panel-image">
+                    <img src="/image/nachalo.jpg" class="panel-image-preview" height="266" />
+                </div>
+            </div>
+            <div class="panel-footer text-center">
+                <button class="btn btn-default">
+                    Перейти
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .panel-image img.panel-image-preview {
+        width: 100%;
+        border-radius: 4px 4px 0px 0px;
+    }
+
+    .panel-heading ~ .panel-image img.panel-image-preview {
+        border-radius: 0px;
+    }
+
+    .panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+        overflow: hidden;
+    }
+
+    .panel-image ~ .panel-footer a {
+        padding: 0px 10px;
+        font-size: 1.3em;
+        color: rgb(100, 100, 100);
+    }
+
+    .panel-image.hide-panel-body ~ .panel-body {
+        height: 0px;
+        padding: 0px;
+    }
+</style>

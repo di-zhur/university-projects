@@ -1,0 +1,78 @@
+﻿<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body" *ngIf="conditionForecast">
+                <h4>Прогноз</h4>
+                <hr />
+                <div class="form-group">
+                    <kendo-chart>
+                        <kendo-chart-title text="График прогноза проходного балла"></kendo-chart-title>
+                        <kendo-chart-category-axis>
+                            <kendo-chart-category-axis-item [categories]="categoriesData"
+                                                            [title]="{ text: 'Год' }">
+                            </kendo-chart-category-axis-item>
+                        </kendo-chart-category-axis>
+                        <kendo-chart-series>
+                            <kendo-chart-series-item type="line"
+                                                     [data]="forecastData"
+                                                     [title]="{ text: 'Балл' }">
+                            </kendo-chart-series-item>
+                        </kendo-chart-series>
+                    </kendo-chart>
+                </div>
+                <div class="form-group">
+                    <ul>
+                        <li>
+                            <strong> Прогнозируемый балл на следующий год - </strong> {{valueForecast.LastMark}}
+                        </li>
+                        <li>
+                            <strong> Средняя относительная ошибка - </strong> {{valueForecast.ErrorAverage}}%
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-body" *ngIf="!conditionForecast">
+                <h5 align="center">Установите параметры для отображения данных</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Параметры</strong>
+                </div>
+                <div class="form-group">
+                    <p>Университет</p>
+                    <kendo-dropdownlist [defaultItem]="{ shortName: 'Выберите', id: null }"
+                                        [data]="dropdownUniversitys"
+                                        [textField]="'shortName'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedUniversity($event)"
+                                        style="width:100%">
+                    </kendo-dropdownlist>
+                </div>
+                <div class="form-group" *ngIf="showDropdownFaculty">
+                    <p>Факультет</p>
+                    <kendo-dropdownlist [defaultItem]="{ name: 'Выберите', id: null }"
+                                        [data]="dropdownFacultys"
+                                        [textField]="'name'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedFaculty($event)"
+                                        style="width:100%">
+                    </kendo-dropdownlist>
+                </div>
+                <div class="form-group" *ngIf="showDropdownSpecialty">
+                    <p>Специальность</p>
+                    <kendo-dropdownlist [defaultItem]="{ name: 'Выберите', id: null }"
+                                        [data]="dropdownSpecialtys"
+                                        [textField]="'name'"
+                                        [valueField]="'id'"
+                                        (selectionChange)="selectedSpecialty($event)"
+                                        style="width:100%">
+                    </kendo-dropdownlist>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>

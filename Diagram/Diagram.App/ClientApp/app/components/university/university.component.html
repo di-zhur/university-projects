@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <button type="button" class="list-group-item" [routerLink]="['./description']">
+             Описание
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./statistics']">
+             Статистика
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="inner-outlet">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="/image/{{university.id}}.png" />
+        </div>
+        <button kendoButton style="width:100%">Редактировать данные</button>
+    </div>
+</div>
+
+

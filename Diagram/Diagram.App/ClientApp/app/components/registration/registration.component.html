@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <button type="button" class="list-group-item" [routerLink]="['./ed-university']">
+                Университет
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./ed-faculty']">
+                Факультет
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./ed-specialty']">
+                Специальность
+            </button>
+            <button type="button" class="list-group-item" [routerLink]="['./ed-settotal']">
+                Данные статистики
+            </button>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="inner-outlet">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

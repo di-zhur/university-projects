@@ -1,0 +1,48 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <h4>Статистика зачислений и проходных баллов</h4>
+        <hr />
+        <div class="form-group">
+            <p>Факультет</p>
+            <kendo-dropdownlist class="form-control"
+                                [defaultItem]="{ name: 'Выберите факультет', id: null }"
+                                [data]="dropdownFacultys"
+                                [textField]="'name'"
+                                [valueField]="'id'"
+                                [valuePrimitive]="true"
+                                (selectionChange)="selectedSpecialty($event)">
+            </kendo-dropdownlist>
+        </div>
+
+        <div class="form-group" *ngIf="conditionFaculty">
+            <p>Специальность</p>
+            <kendo-dropdownlist class="form-control"
+                                [defaultItem]="{ name: 'Выберите специальность', id: null }"
+                                [data]="dropdownSpecialtys"
+                                [textField]="'name'"
+                                [valueField]="'id'"
+                                [valuePrimitive]="true"
+                                (selectionChange)="selectedFaculty($event)">
+            </kendo-dropdownlist>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="conditionSetTotal" class="panel panel-default">
+    <div class="panel-body">
+        <h4>Данные</h4>
+        <hr />
+        <kendo-grid [data]="setTotals" [scrollable]="'none'">
+            <kendo-grid-column field="year" title="Год"></kendo-grid-column>
+            <kendo-grid-column field="places" title="Бюджетых мест"></kendo-grid-column>
+            <kendo-grid-column field="request" title="Подано"></kendo-grid-column>
+            <kendo-grid-column field="budgetPlaces" title="Бюджет"></kendo-grid-column>
+            <kendo-grid-column field="payPlaces" title="Платно"></kendo-grid-column>
+            <kendo-grid-column field="mark" title="Проходной балл"></kendo-grid-column>
+            <kendo-grid-column field="contest" title="Конкурс"></kendo-grid-column>
+        </kendo-grid>
+    </div>
+</div>
+
+
+
