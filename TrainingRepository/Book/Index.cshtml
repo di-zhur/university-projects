@@ -1,0 +1,115 @@
+﻿<!-- Main jumbotron for a primary marketing message or call to action -->
+    
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <i class="fa fa-pie-chart" style="font-size:48px;"></i>
+            <p>Классификация специальностей высших учебных заведений на основании проходных баллов, поданных заявлений, бюджетных мест</p>
+            <p><a class="btn btn-default" href="#" role="button">Перейти &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-area-chart" style="font-size:48px;"></i>
+            <p>Прогнозирование и статистика проходных баллов высших учебных заведений</p>
+            <p><a class="btn btn-default" href="#" role="button">Перейти &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-line-chart" style="font-size:48px;"></i>
+            <p>Общий райтинг высших учебных заведений</p>
+            <p><a class="btn btn-default" href="#" role="button">Перейти &raquo;</a></p>
+        </div>
+    </div>
+
+    <hr>
+        
+        
+</div>
+
+<p><button type="button" class="k-button" id="stopRefresh">Stop automatic refresh</button></p>
+
+<div id="grid"></div>
+
+<script>
+    var gridElement = $("#grid");
+
+    function restoreSelection(e) {
+        var OrderID = 11077
+        var grid = $("#grid").data().kendoGrid;
+        var data = grid.dataSource.data();
+        var skip = grid.dataSource.skip();
+        var take = grid.dataSource.take();
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].OrderID == OrderID) {
+                var select = grid.tbody.find('tr[data-uid="' + data[i].uid + '"]');
+                grid.select(select);
+                break;
+            }
+        }
+    }
+
+
+
+    gridElement.kendoGrid({
+        dataSource: {
+            type: "odata",
+            transport: {
+                read: "http://demos.kendoui.com/service/Northwind.svc/Orders"
+            },
+            schema: {
+                model: {
+                    fields: {
+                        OrderID: { type: "number" },
+                        Freight: { type: "number" },
+                        ShipName: { type: "string" },
+                        OrderDate: { type: "date" }
+                    }
+                }
+            },
+            pageSize: 300,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+        },
+        height: 300,
+        dataBound: restoreSelection,
+        resizable: true,
+        pageable: true,
+        selectable: true,
+        columns: [{
+            field: "OrderID"
+        }, {
+            field: "Freight"
+        }, {
+            field: "OrderDate",
+            title: "Order Date",
+            format: "{0:MM/dd/yyyy}"
+        }, {
+            field: "ShipName",
+            title: "Ship Name"
+        }]
+    });
+
+</script>
+
+<style>
+    html
+{
+    font: 12px sans-serif;
+}
+
+.k-grid-content > .k-loading-mask
+{
+    visibility: hidden;
+}
+
+.k-grid > .k-loading-mask
+{
+    z-index: 2;
+}
+
+.k-grid > .k-loading-mask > .k-loading-color
+{
+    opacity: .7;
+}
+</style>
