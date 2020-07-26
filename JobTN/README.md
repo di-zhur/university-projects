@@ -1,2 +1,0 @@
-# JobTN
-Test task
